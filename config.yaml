@@ -1,0 +1,143 @@
+# Global TEA Model Configuration File
+# This file contains default parameters and settings for the model
+
+# Model Parameters
+model:
+  plant_lifetime: 25  # years
+  base_wacc: 0.08  # 8% base weighted average cost of capital
+  default_capacity_factor: 0.913  # 8000h/8760h per year
+  
+# File Paths (relative to project root)
+paths:
+  input_data: "data/TEA input.xlsx"
+  output_dir: "output"
+  results_dir: "output/results"
+  figures_dir: "output/figures"
+
+# Scenarios to analyze
+scenarios:
+  - "Base_2024"
+  - "Base_2030" 
+  - "Base_2050"
+  - "2 degree_2030"
+  - "2 degree_2050"
+  - "1.5 degree_2030"
+  - "1.5 degree_2050"
+
+# Monte Carlo Settings
+monte_carlo:
+  default_samples: 1000
+  enable_caching: true
+  parallel_processing: true
+  
+# Technology Categories
+technology_groups:
+  electrolysis:
+    - "PEM"
+    - "AE" 
+    - "SOEC"
+    - "HTSE"
+    - "CuCl"
+  
+  co2_capture:
+    - "DAC"
+  
+  synthetic_fuels:
+    - "PTM"
+    - "RWGS_FT"
+    - "ST_FT" 
+    - "SR_FT"
+    - "TG_FT"
+    - "RWGS_MeOH"
+    - "HVO"
+    - "HTL"
+    - "B_PYR"
+    - "HB"
+    - "AD"
+
+# Multi-product technologies and their allocation factors
+multi_product_allocation:
+  SR_FT:
+    diesel: 0.7
+    kerosene: 0.4
+  ST_FT:
+    diesel: 0.65
+    kerosene: 0.35
+  RWGS_FT:
+    diesel: 0.6
+    kerosene: 0.4
+  TG_FT:
+    diesel: 0.35
+    kerosene: 0.55
+  HVO:
+    diesel: 0.8
+    kerosene: 0.8
+  B_PYR:
+    kerosene: 1.0
+  RWGS_MeOH:
+    methanol: 0.50
+    DME: 0.15
+    kerosene: 0.35
+
+# Upgrading CAPEX (EUR/kW) for secondary products
+upgrading_capex:
+  kerosene:
+    SR_FT: 250
+    ST_FT: 250
+    RWGS_FT: 250
+    TG_FT: 250
+    HVO: 200
+    B_PYR: 300
+    RWGS_MeOH: 400
+  DME:
+    RWGS_MeOH: 150
+
+# Lower Heating Values (MJ/kg)
+lhv_values:
+  diesel: 43.0
+  kerosene: 43.2
+  methanol: 19.9
+  DME: 28.8
+  hydrogen: 120.0
+
+# Geographic constraints
+geographic_constraints:
+  nuclear_required:
+    - "HTSE"
+    - "CuCl"
+  csp_required:
+    - "SR_FT"
+    - "ST_FT"
+
+# Uncertainty parameters for Monte Carlo
+uncertainty:
+  # Base uncertainty factors (multiplied by scenario-specific factors)
+  capex:
+    min_factor: 0.8
+    max_factor: 1.3
+  
+  om:
+    std_dev: 0.15  # 15% standard deviation
+  
+  efficiency:
+    std_dev_factor: 0.06  # 6% of baseline value
+  
+  lifetime:
+    min_factor: 0.8
+    max_factor: 1.1
+  
+  wacc:
+    technology_std_dev: 0.12  # 12% for technology factors
+    country_std_dev: 0.18     # 18% for country factors
+  
+  electricity_price:
+    std_dev: 0.22  # 22% standard deviation
+
+# Output settings
+output:
+  save_detailed_components: true
+  save_monte_carlo_raw: false  # Large files, set to true if needed
+  generate_plots: true
+  plot_formats: ["png", "pdf"]
+  plot_dpi: 600
+  
