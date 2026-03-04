@@ -1,4 +1,4 @@
-# Global Techno-Economic Analysis (TEA) Model
+# Global Low Carbon Fuel Techno-Economic Analysis (LCFTEA) Model
 
 ## Overview
 
@@ -146,3 +146,4 @@ from analysis.comprehensive_sensitivity_analysis import run_sensitivity_analysis
 ## Contact
 
 For questions or support, please contact zipeng.liu@psi.ch.
+
