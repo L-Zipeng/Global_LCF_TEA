@@ -4,6 +4,7 @@
 
 This repository contains the Global TEA model for evaluating the techno-economic feasibility of various energy conversion technologies across different countries and scenarios. The model supports both deterministic and Monte Carlo uncertainty analysis for comprehensive cost assessment.
 
+
 ## Features
 
 - **Multi-technology Analysis**: Supports various energy conversion technologies including electrolysis, direct air capture, synthetic fuel production, and more
@@ -146,4 +147,5 @@ from analysis.comprehensive_sensitivity_analysis import run_sensitivity_analysis
 ## Contact
 
 For questions or support, please contact zipeng.liu@psi.ch.
+
 
